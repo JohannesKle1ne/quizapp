@@ -107,7 +107,7 @@ body,
 }
 
 .arrow {
-  background-image: url("arrow.png");
+  background-image: url("images/arrow.png");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -128,7 +128,7 @@ body,
   margin-right: 5%;
 }
 .happy-birthday {
-  background-image: url("hb.png");
+  background-image: url("images/hb.png");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -204,7 +204,7 @@ body,
 }
 
 .image {
-  background-image: url("me-small.png");
+  background-image: url("images/me-small.png");
   background-color: #cccccc;
   background-position: center;
   background-position-x: 60%;
@@ -225,7 +225,7 @@ body,
 } */
 
 .second-image {
-  background-image: url("me2-small.png");
+  background-image: url("images/me2-small.png");
   background-color: #cccccc;
   background-position: center;
   background-position-x: 60%;
@@ -247,7 +247,7 @@ body,
 }
 
 .heart-div1 {
-  background-image: url("heart3.png");
+  background-image: url("images/heart3.png");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -258,7 +258,7 @@ body,
   width: 80px;
 }
 .heart-div2 {
-  background-image: url("heart3.png");
+  background-image: url("images/heart3.png");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -270,7 +270,7 @@ body,
   width: 80px;
 }
 .heart-div3 {
-  background-image: url("heart3.png");
+  background-image: url("images/heart3.png");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
