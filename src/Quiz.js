@@ -49,7 +49,12 @@ function Quiz(props) {
 
   //init players and clothes
   const initPlayers = () => {
-    const otherClothes = ["Hose", "Unterhose", "Socke", "Beide Socken"];
+    const otherClothes = [
+      "Morgen Nudeln kochen",
+      "Unterhose",
+      "Socke",
+      "Beide Socken",
+    ];
     const jClothes = ["Pulli", "T-Shirt"];
     const tClothes = ["Pulli", "T-Shirt", "BH"];
 
