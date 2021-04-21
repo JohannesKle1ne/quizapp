@@ -1,6 +1,5 @@
 # Quiz App
 
-Small Present for my Girlfriend.
 
 ## Install
 
