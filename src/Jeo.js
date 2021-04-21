@@ -92,7 +92,7 @@ function Jeo(props) {
   };
 
   return (
-    <div className="image-page">
+    <div onClick={props.nextScreen} className="image-page">
       <div className={second ? "second-image" : "image"}>
         <div
           className="touchbox"

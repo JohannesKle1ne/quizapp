@@ -74,7 +74,7 @@ function Quiz(props) {
     rand = randomIntFromInterval(0, 1);
 
     setPlayer({
-      thorid: tClothes,
+      clara: tClothes,
       johannes: jClothes,
       turn: rand,
       result: 0,
@@ -100,12 +100,12 @@ function Quiz(props) {
     newPlayerState.result = 0;
     if (player.result === 2) {
       if (player.turn === 0) {
-        newPlayerState.thorid.shift();
+        newPlayerState.clara.shift();
       } else {
         newPlayerState.johannes.shift();
       }
     }
-    if (newPlayerState.thorid.length === 0) {
+    if (newPlayerState.clara.length === 0) {
       newPlayerState.turn = 1;
     }
     if (newPlayerState.johannes.length === 0) {
@@ -113,7 +113,7 @@ function Quiz(props) {
     }
     if (
       newPlayerState.johannes.length === 0 &&
-      newPlayerState.thorid.length === 0
+      newPlayerState.clara.length === 0
     ) {
       newPlayerState.result = 3;
     }
@@ -123,7 +123,7 @@ function Quiz(props) {
 
   var name;
   if (player.turn === 0) {
-    name = "Thorid";
+    name = "Clara";
   } else {
     name = "Johannes";
   }
@@ -136,7 +136,7 @@ function Quiz(props) {
           <div className="name">{player.result < 3 ? <p>{name}</p> : null}</div>
           <div className="text-page">
             <Result
-              tPiece={player.thorid[0]}
+              tPiece={player.clara[0]}
               jPiece={player.johannes[0]}
               turn={player.turn}
               result={player.result}
