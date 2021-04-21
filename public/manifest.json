@@ -1,0 +1,15 @@
+{
+    "short_name": "Thorid's TT",
+    "name": "Thorid's TT PWA",
+    "icons": [
+        {
+            "src": "/images/logottt.png",
+            "type": "image/png",
+            "sizes": "352x205"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#294c60",
+    "background_color": "#d6d3cc"
+}
