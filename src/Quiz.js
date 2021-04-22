@@ -81,7 +81,7 @@ function Quiz(props) {
     let newPlayerState = { ...player };
     newPlayerState.turn = 1 - player.turn;
     newPlayerState.result = 0;
-    if (newPlayerState.scoreJohannes >= 2 || newPlayerState.scoreClara >= 2) {
+    if (newPlayerState.scoreJohannes >= 10 || newPlayerState.scoreClara >= 10) {
       newPlayerState.result = 3;
     }
     setPlayer(newPlayerState);
@@ -185,7 +185,7 @@ function Result({ scoreClara, scoreJohannes, result, correctAnswer }) {
   var newCorrectAnswer = correctAnswer;
   var winner = "";
   var looser = "";
-  if (scoreClara >= 2) {
+  if (scoreClara >= 10) {
     winner = "Clara";
     looser = "Johannes";
   } else {
