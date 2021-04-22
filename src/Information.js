@@ -4,7 +4,7 @@ function Welcome(props) {
   const strings = [
     "Glückwunsch! Du hast den geheimen Bereich entdeckt!",
     "Hier geht es darum zufällige Fragen zu beantworten...",
-    "...und so eine falsch beantwortete Frage hat natürlich Konsequenzen...",
+    "...und verlieren hat natürlich Konsequenzen...",
     "Viel Spaß ;)",
   ];
   let [counter, setCoutner] = useState(0);

@@ -49,38 +49,11 @@ function Quiz(props) {
 
   //init players and clothes
   const initPlayers = () => {
-    const otherClothes = [
-      "Morgen Nudeln kochen",
-      "Unterhose",
-      "Socke",
-      "Beide Socken",
-    ];
-    const jClothes = ["Pulli", "T-Shirt"];
-    const tClothes = ["Pulli", "T-Shirt", "BH"];
-
     var rand = randomIntFromInterval(0, 1);
-    jClothes.splice(rand, 0, otherClothes[0]);
-    rand = randomIntFromInterval(0, 1);
-    tClothes.splice(rand, 0, otherClothes[0]);
-
-    rand = randomIntFromInterval(2, 3);
-    jClothes.splice(rand, 0, otherClothes[1]);
-    rand = randomIntFromInterval(2, 4);
-    tClothes.splice(rand, 0, otherClothes[1]);
-
-    rand = randomIntFromInterval(0, 4);
-    jClothes.splice(rand, 0, otherClothes[2]);
-    rand = randomIntFromInterval(0, 5);
-    tClothes.splice(rand, 0, otherClothes[3]);
-
-    rand = randomIntFromInterval(0, 5);
-    jClothes.splice(rand, 0, otherClothes[2]);
-
-    rand = randomIntFromInterval(0, 1);
 
     setPlayer({
-      clara: tClothes,
-      johannes: jClothes,
+      scoreClara: 0,
+      scoreJohannes: 0,
       turn: rand,
       result: 0,
     });
@@ -91,6 +64,11 @@ function Quiz(props) {
     let newPlayer = { ...player };
     if (index === question.correct_answer) {
       newPlayer.result = 1;
+      if (player.turn === 0) {
+        newPlayer.scoreClara = player.scoreClara + 1;
+      } else {
+        newPlayer.scoreJohannes = player.scoreJohannes + 1;
+      }
       setPlayer(newPlayer);
     } else {
       newPlayer.result = 2;
@@ -103,23 +81,7 @@ function Quiz(props) {
     let newPlayerState = { ...player };
     newPlayerState.turn = 1 - player.turn;
     newPlayerState.result = 0;
-    if (player.result === 2) {
-      if (player.turn === 0) {
-        newPlayerState.clara.shift();
-      } else {
-        newPlayerState.johannes.shift();
-      }
-    }
-    if (newPlayerState.clara.length === 0) {
-      newPlayerState.turn = 1;
-    }
-    if (newPlayerState.johannes.length === 0) {
-      newPlayerState.turn = 0;
-    }
-    if (
-      newPlayerState.johannes.length === 0 &&
-      newPlayerState.clara.length === 0
-    ) {
+    if (newPlayerState.scoreJohannes >= 2 || newPlayerState.scoreClara >= 2) {
       newPlayerState.result = 3;
     }
     setPlayer(newPlayerState);
@@ -141,10 +103,10 @@ function Quiz(props) {
           <div className="name">{player.result < 3 ? <p>{name}</p> : null}</div>
           <div className="text-page">
             <Result
-              tPiece={player.clara[0]}
-              jPiece={player.johannes[0]}
               turn={player.turn}
               result={player.result}
+              scoreClara={player.scoreClara}
+              scoreJohannes={player.scoreJohannes}
               correctAnswer={question.answers[question.correct_answer]}
             ></Result>
             {player.result < 3 ? (
@@ -216,24 +178,29 @@ function Answer({ index, answer, answerSelected }) {
   );
 }
 
-function Result({ tPiece, jPiece, turn, result, correctAnswer }) {
+function Result({ scoreClara, scoreJohannes, result, correctAnswer }) {
   var answer = "Richtig!";
   var answerStyle = "answer-right";
-  var pieceText = "Du darst brav alles anlassen.";
-  var piece = tPiece;
+  var scoreText = scoreClara + " | " + scoreJohannes;
   var newCorrectAnswer = correctAnswer;
-  if (turn === 1) {
-    piece = jPiece;
+  var winner = "";
+  var looser = "";
+  if (scoreClara >= 2) {
+    winner = "Clara";
+    looser = "Johannes";
+  } else {
+    winner = "Johannes";
+    looser = "Clara";
   }
+
   if (result === 2) {
     answer = "Falsch!";
-    pieceText = "Oh Oh... " + piece + " ausziehen";
     answerStyle = "answer-false";
   }
   if (result === 3) {
-    answer = "Enjoy!";
-    pieceText = "";
-    newCorrectAnswer = "";
+    answer = "Sieg!";
+    newCorrectAnswer =
+      winner + " hat gewonnen!\n" + looser + " muss heute Abend kochen!";
   }
   return (
     <div className="question-div">
@@ -244,7 +211,10 @@ function Result({ tPiece, jPiece, turn, result, correctAnswer }) {
         <p>{answer}</p>
       </div>
       <div className="question">
-        <p>{pieceText}</p>
+        <p>Punktestand: </p>
+      </div>
+      <div className="question">
+        <p>{scoreText}</p>
       </div>
     </div>
   );
