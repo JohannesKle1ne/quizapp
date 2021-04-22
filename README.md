@@ -1,5 +1,6 @@
 # Quiz App
 
+This App is designed for iphone 6/7/8 (not for desktop usage)
 
 ## Install
 
